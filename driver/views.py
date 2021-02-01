@@ -45,19 +45,13 @@ def searchRider(request):
 	gmaps = googlemaps.Client(key='AIzaSyB64EM3P7XmfNlop7aUjzacIXAQJVAMjkA')
 	print("@@@@@@@@@@@@@@@@@@@@@----------------------------------------------------------------------------------------")
 	driverRoutePoints = gmaps.directions((float(liveLat) ,float(liveLong)), driver_dest, mode="driving")
-	# print(len(driverRoutePoints[0]))
-	# print(type(driverRoutePoints[0]))
-	# legs = driverRoutePoints[0].get("legs")
-	# print("----------------------------------------------------------------------------------------")
+
 	temp = []
 	for leg in driverRoutePoints[0]['legs']:
 		for step in leg['steps']:
 			html_instructions = step['html_instructions']
 			instr= step['distance']['text']
 			instrtime=step['duration']['text']
-			# print(step.keys())
-			# print (html_instructions + " ||| " +instr+ " ||| " + instrtime + "!!!!!!!!!!!!!")
-			# print(step.get("start_location"), " || ", step.get("end_location"))
 			temp.append(step.get("start_location"))
 			temp.append(step.get("end_location"))
 	idx = np.round(np.linspace(0, len(temp) - 1, min(10, len(temp)))).astype(int)
@@ -71,15 +65,8 @@ def searchRider(request):
 			# print(r)
 			my_dist = gmaps.distance_matrix(point , r.pickUp)['rows'][0]['elements'][0]["distance"]["value"]
 			my_dist = my_dist/1000.0
-			# my_dist_1 = gmaps.distance_matrix(driver_dest , r.destination)['rows'][0]['elements'][0]["distance"]["value"]
-			# my_dist_1 = my_dist_1/1000.0
 			expTime = gmaps.distance_matrix(r.pickUp , (liveLat, liveLong))['rows'][0]['elements'][0]["duration"]["text"]
-			# print(expTime , "-------------------------------------------")
-			# cost = cost/1000.0
-			# cost = cost*10
-			# r.cost = cost
-			# r.save()
-			# print("the distance is " + str(my_dist))
+			
 			if my_dist < 60 :
 				flag = False
 				for point in driverRoutePoints:
@@ -99,7 +86,6 @@ def searchRider(request):
 	return JsonResponse({'rideList': rideList})
 	#algo rider search 
 
-	#[{"model": "rider.ride", "pk": "lodhuji", "fields": {"pickUp": "Bhopal Railway Station, Bajariya, Navbahar Colony, Bhopal, Madhya Pradesh, India", "destination": "New Delhi, Delhi, India", "complete": false, "status": false, "cost": 0}}]
 
 def acceptRider(request):
 	print(request)

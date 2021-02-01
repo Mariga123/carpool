@@ -36,15 +36,7 @@ def validateForm(input):
 		user.last_name = lastName = input['lastName']
 		user.save()
 		return False
-	# try:
-	# 	newUser = user.objects.get(pk = input["userId"])
-	# 	return True
-	# except:
-	# 	newUser = user(userId = input['userId'] , passWd = input['passWd'] ,
-	# 				   firstName = input['firstName'] , lastName = input['lastName'])
-	# 	newUser.save()
-	# 	return False
- 
+
 
 def addUser(request):
 	context = {'userExist' : False}
@@ -70,16 +62,3 @@ def verifyUser(request):
 		except:
 			context['userExist'] = False
 			return render(request , "login.html" ,context)
-		# try:
-		# 	newUser = user.objects.get(pk = request.POST["userId"])
-		# 	if newUser.passWd != request.POST["passWd"]:
-		# 		context['loginFail'] = True
-		# 		return render(request , "login.html" , context)
-		# 	else:
-		# 		return render(request  , "drive_or_ride.html" , {})
-		# except:
-		# 	context['userExist'] = False
-		# 	return render(request , "login.html" ,context)
-
-
-# if {{userExist}}

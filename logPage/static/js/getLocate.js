@@ -21,10 +21,6 @@ function initialize(coords) {
 		zoom: 8,
 		// Current Lat and Long position of the pin/
 		center: new google.maps.LatLng( 18.5204, 73.8567 ),
-		// center : {
-		// 	lat: -34.397,
-		// 	lng: 150.644
-		// },
 		disableDefaultUI: false, // Disables the controls like zoom control on the map if set to true
 		scrollWheel: true, // If set to false disables the scrolling on the map.
 		draggable: true, // If set to false , you cannot move the map around.
@@ -187,15 +183,4 @@ function initMap() {
 		handleLocationError(false, infoWindow, map.getCenter());
 	}
 	console.log(test + " TEST OUT babh abha a")
-	
-	//initMap1();
-	// var directionsService = new google.maps.DirectionsService();
-	// console.log(liveLongitude, liveLatitude, dest_point)
-	// var routePoints = directionsService.route(
-	// 						{
-	// 						origin: new google.maps.LatLng(liveLatitude , liveLongitude),
-	// 						destination: dest_point,
-	// 						travelMode: 'DRIVING'
-	// 						}).routes[0].legs[0].steps;
-	// console.log(routePoints)
 }
