@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse ,Http404
 from django.template import loader
 from django.shortcuts import render , get_object_or_404
@@ -7,6 +7,8 @@ from django.views.generic.edit import CreateView , UpdateView , DeleteView
 from django.http import JsonResponse
 from rider.models import ride
 from django.core import serializers
+from .forms import *
+from .models import *
 
 import numpy as np
 # import googlemaps 
@@ -148,3 +150,22 @@ def endRide(request):
 	return JsonResponse({'success' : True , 'acceptList' : acceptList, 'cost' : r.cost})
 	
 
+
+def profile_info(request):
+    current_user = request.user
+
+    return render(request, 'driverHome.html',locals())
+
+def profile_update(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = UpdateForm(request.POST, request.FILES)
+        if form.is_valid():
+            add=form.save(commit=False)
+            add.user = current_user
+            add.save()
+        return redirect('home')
+
+    else: 
+        form = UpdateForm()
+    return render(request, 'driverHome.html',{'form':form})
