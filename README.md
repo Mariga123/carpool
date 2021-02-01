@@ -76,3 +76,6 @@ There are two cateogories of users:
 
 * [John Mariga](https://github.com/Mariga123)
 * [Carol Wambui](https://github.com/carol-wambui)
+
+### License
+licensed under [MIT license](LICENSE)
