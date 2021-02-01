@@ -13,7 +13,7 @@ class Driver(models.Model):
     bio =  HTMLField(blank=True)
     avatar = CloudinaryField('image', blank=True, null=True)
     vehicle = models.ForeignKey('driver.Car', on_delete=models.CASCADE)
-    contact_info = models.CharField(max_length=50)
+    contact_info = models.CharField(max_length=60)
 
     
     def __str__(self):

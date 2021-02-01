@@ -83,9 +83,9 @@ WSGI_APPLICATION = 'carpool.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'carpool',
+        'NAME': 'carpool1',
         'USER': 'moringa',
-    'PASSWORD':'kapreaty',
+    'PASSWORD':'zelly',
     }
 }
 
