@@ -123,8 +123,6 @@ def acceptRider(request):
 	return JsonResponse({'success' : success , 'acceptList' : acceptList})
 
 
-#<WSGIRequest: GET '/driver/accept?riderId=lodhuji&driverId=User01'>
-#<WSGIRequest: GET '/driver/driveProcess?id=User01&liveLat=19.7514798&liveLong=75.7138884&destination=New%20Delhi%20Railway%20Station%2C%20Kamla%20Market%2C%20Ajmeri%20Gate%2C%20New%20Delhi%2C%20Delhi%2C%20India'>
 
 def endRide(request):
 	idList = request.GET['id']
