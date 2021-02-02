@@ -16,7 +16,7 @@ class ride(models.Model):
 
 	@classmethod
 	def acceptRide(self , riderId , driverId):
-		print("acceptRide of ride model ########################")
+		print("acceptRide of ride model")
 		success = True
 		with transaction.atomic():
 			r = ride.objects.select_for_update().get(pk = riderId)

@@ -40,7 +40,6 @@ def rideInfo(request):
 	return render(request , "blank.html" , context)
 
 def statusUpdate(request):
-	print("here ----------------------------------")
 	id = request.GET['id']
 	update =request.GET['update']
 	gmaps = googlemaps.Client(key='AIzaSyB64EM3P7XmfNlop7aUjzacIXAQJVAMjkA') 

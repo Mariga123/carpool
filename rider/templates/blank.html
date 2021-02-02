@@ -90,23 +90,6 @@
       <div class="sidebar-heading">
         Interface
       </div>
-
-      <!-- Nav Item - Pages Collapse Menu -->
-      <!-- <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>Components</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="buttons.html">Buttons</a>
-            <a class="collapse-item" href="cards.html">Cards</a>
-          </div>
-        </div>
-      </li> -->
-
-      <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-fw fa-wrench"></i>
@@ -340,14 +323,6 @@
         </nav>
         <!-- End of Topbar -->
 
-        <!-- Begin Page Content -->
-        <div class="container-fluid" id ="proceedtopickup">
-
-          <!-- Page Heading -->
-          <!-- <h1 class="h3 mb-4 text-gray-800">Blank Page</h1> -->
-
-        </div>
-        <!-- /.container-fluid -->
         <div class = "container-fluid" id ="processingdiv">
           <img id="processingimg" src="{% static 'images/processing.gif' %}" style="margin-left: auto;margin-right: auto;display:block">
         </div>
@@ -818,9 +793,7 @@
           },
           error: function() {
               console.log("There was an error.");
-              // Want to repeat AJAX call also in case of error? 
-              // Then just uncomment the following two lines:
-              // getMyJson();
+
           }
           });
       }

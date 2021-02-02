@@ -25,7 +25,6 @@ def driverInfo(request):
 	return render(request , "driverProcess1.html" , {'username' : request.user.username , 'dest' : request.POST['destination']})
 
 def searchRider(request):
-	print("@@@@@@@@@@@@@@@@@@@@@@@@@*******************&&&&&&&&&&&&&&&&&&&&&&&&&&&**********************")
 	print(request)
 	driverId = request.GET['id']
 	liveLat = request.GET['liveLat']
@@ -33,7 +32,6 @@ def searchRider(request):
 	driver_dest = request.GET['destination']
 	print(liveLat + "++++++" + liveLong);
 	print(request.GET['destination'])
-	print("*******************&&&&&&&&&&&&&&&&&&&&&&&&&&&**********************")
 
 	if liveLat == "" or liveLong == "":
 		return JsonResponse({'success': False})
@@ -41,9 +39,7 @@ def searchRider(request):
 	riderSet = ride.objects.select_for_update().filter(status = False , complete = False)
 	rideList = []
 	print(riderSet)
-	print("####################----------------------------------------------------------------------------------------")
 	gmaps = googlemaps.Client(key='AIzaSyB64EM3P7XmfNlop7aUjzacIXAQJVAMjkA')
-	print("@@@@@@@@@@@@@@@@@@@@@----------------------------------------------------------------------------------------")
 	driverRoutePoints = gmaps.directions((float(liveLat) ,float(liveLong)), driver_dest, mode="driving")
 
 	temp = []
@@ -89,7 +85,6 @@ def searchRider(request):
 
 def acceptRider(request):
 	print(request)
-	print("***************************")
 	idList = request.GET['id']
 	ind = idList.find("&&&----&&&")
 	driverId = idList[:ind]
@@ -105,9 +100,7 @@ def acceptRider(request):
 		data_dict = {'riderId':r.userId , 'pickUp': r.pickUp , 'destination' : r.destination}
 		acceptList.append(data_dict)
 	
-	print("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
 	print(acceptList)
-	print("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
 	return JsonResponse({'success' : success , 'acceptList' : acceptList})
 
 
